@@ -1,0 +1,32 @@
+name: Atualizar agenda
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Baixar JSON
+        run: |
+          curl -L "https://caarn-my.sharepoint.com/:u:/g/personal/fagnerlima_caarn_org_br/IQDx4vuwIPx8Qr4yrkg3dGCDATyw_lT3uD0Wr8eXrVpO74I?e=aQEuVc&download=1" -o agenda-salas.json
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add agenda-salas.json
+
+          if git diff --cached --quiet; then
+            echo "Sem alterações."
+          else
+            git commit -m "Atualiza agenda automaticamente"
+            git push
+          fi
