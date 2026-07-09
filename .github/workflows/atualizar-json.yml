@@ -15,7 +15,7 @@ jobs:
 
       - name: Baixar JSON
         run: |
-          curl -L "https://caarn-my.sharepoint.com/:u:/g/personal/fagnerlima_caarn_org_br/IQDx4vuwIPx8Qr4yrkg3dGCDATyw_lT3uD0Wr8eXrVpO74I?e=aQEuVc" -o agenda-salas.json
+          curl -L "https://caarn-my.sharepoint.com/:u:/g/personal/fagnerlima_caarn_org_br/IQDx4vuwIPx8Qr4yrkg3dGCDATyw_lT3uD0Wr8eXrVpO74I?download=1" -o agenda-salas.json
 
       - name: Commit
         run: |
